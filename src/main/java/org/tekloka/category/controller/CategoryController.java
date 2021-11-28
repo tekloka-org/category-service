@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.tekloka.category.constants.PermissionConstants;
 import org.tekloka.category.dto.CategoryDTO;
+import org.tekloka.category.security.AccessPermissions;
 import org.tekloka.category.service.CategoryService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,6 +34,7 @@ public class CategoryController {
 	     @ApiResponse(responseCode = "500", description = "Internal Server Error")
 	})
 	@PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
+	@AccessPermissions(value = PermissionConstants.SAVE_CATEGORY)
 	public ResponseEntity<Object> save(HttpServletRequest request, @RequestBody CategoryDTO categoryDTO) {
 		return categoryService.save(request, categoryDTO);
 	}
@@ -42,6 +45,7 @@ public class CategoryController {
 	     @ApiResponse(responseCode = "500", description = "Internal Server Error")
 	})
 	@PostMapping(path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	@AccessPermissions(value = PermissionConstants.UPDATE_CATEGORY)
 	public ResponseEntity<Object> update(HttpServletRequest request, @RequestBody CategoryDTO categoryDTO) {
 		return categoryService.update(request, categoryDTO);
 	}
@@ -52,6 +56,7 @@ public class CategoryController {
 	     @ApiResponse(responseCode = "500", description = "Internal Server Error")
 	})
 	@PostMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	@AccessPermissions(value = PermissionConstants.DELETE_CATEGORY)
 	public ResponseEntity<Object> delete(HttpServletRequest request, @RequestBody CategoryDTO categoryDTO) {
 		return categoryService.delete(request, categoryDTO);
 	}
