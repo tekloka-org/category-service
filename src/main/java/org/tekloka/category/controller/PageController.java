@@ -36,7 +36,7 @@ public class PageController {
 	     @ApiResponse(responseCode = "500", description = "Internal Server Error")
 	})
 	@PostMapping(path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-	@AccessPermissions(value = PermissionConstants.SAVE_PAGE)
+	@AccessPermissions(value = PermissionConstants.SAVE_CATEGORY_PAGE)
 	public ResponseEntity<Object> save(HttpServletRequest request, @RequestBody PageDTO pageDTO) {
 		return pageService.save(request, pageDTO);
 	}
@@ -47,7 +47,7 @@ public class PageController {
 	     @ApiResponse(responseCode = "500", description = "Internal Server Error")
 	})
 	@PostMapping(path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
-	@AccessPermissions(value = PermissionConstants.UPDATE_PAGE)
+	@AccessPermissions(value = PermissionConstants.UPDATE_CATEGORY_PAGE)
 	public ResponseEntity<Object> update(HttpServletRequest request, @RequestBody PageDTO pageDTO) {
 		return pageService.update(request, pageDTO);
 	}
@@ -68,7 +68,7 @@ public class PageController {
 	     @ApiResponse(responseCode = "500", description = "Internal Server Error")
 	})
 	@PostMapping(path = "/update-page-links", produces = MediaType.APPLICATION_JSON_VALUE)
-	@AccessPermissions(value = PermissionConstants.DELETE_PAGE)
+	@AccessPermissions(value = PermissionConstants.DELETE_CATEGORY_PAGE)
 	public ResponseEntity<Object> updatePageLinks(HttpServletRequest request, @RequestBody List<PageLinkDTO> pageLinks) {
 		return pageService.updatePageLinks(request, pageLinks);
 	}
